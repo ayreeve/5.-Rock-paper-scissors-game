@@ -1,4 +1,4 @@
-/*jslint devel: true*/
+// jslint devel: true
 
 var newGameBtn = document.getElementById('js-newGameButton');
 
@@ -62,7 +62,7 @@ function newGame() {
         setGameElements();
 
         playerNameElem.innerHTML = player.name;
-        // setGamePoints(); // to be continued
+        setGamePoints();
     }
 
 }
@@ -113,6 +113,15 @@ function checkRoundWinner(playerPick, computerPick) {
         computer.score++;
     }
 
+}
+
+function playerPick(playerPick) {
+    var computerPick = getComputerPick();
+
+    playerPickElem.innerHTML = playerPick;
+    computerPickElem.innerHTML = computerPick;
+
+    checkRoundWinner(playerPick, computerPick);
 }
 
 function setGamePoints() {

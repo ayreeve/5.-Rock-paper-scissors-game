@@ -1,9 +1,12 @@
 // jslint devel: true
 
+// new game button listener
 var newGameBtn = document.getElementById('js-newGameButton');
 
 newGameBtn.addEventListener('click', newGame);
 
+
+// one of three choices listener
 var pickRock = document.getElementById('js-playerPick_rock'),
     pickPaper = document.getElementById('js-playerPick_paper'),
     pickScissors = document.getElementById('js-playerPick_scissors');
@@ -18,6 +21,7 @@ pickScissors.addEventListener('click', function () {
     playerPick('scissors')
 });
 
+// initial values
 var gameState = 'notStarted', //started // ended
     player = {
         name: '',
@@ -27,6 +31,7 @@ var gameState = 'notStarted', //started // ended
         score: 0
     };
 
+// elements displayed depending on game state
 var newGameElem = document.getElementById('js-newGameElement'),
     pickElem = document.getElementById('js-playerPickElement'),
     resultsElem = document.getElementById('js-resultsTableElement');
@@ -39,7 +44,7 @@ function setGameElements() {
             resultsElem.style.display = 'block';
             break;
         case 'ended':
-            newGameBtn.innerText = 'One more time';
+            newGameBtn.innerText = 'Play again';
         case 'notStarted':
         default:
             newGameElem.style.display = 'block';
@@ -50,6 +55,7 @@ function setGameElements() {
 
 setGameElements();
 
+// new game start (after press new game/play again button)
 var playerPointsElem = document.getElementById('js-playerPoints'),
     playerNameElem = document.getElementById('js-playerName'),
     computerPointsElem = document.getElementById('js-computerPoints');
@@ -67,10 +73,7 @@ function newGame() {
 
 }
 
-function playerPick(playerPick) {
-    console.log(playerPick);
-}
-
+// players pick function
 function getComputerPick() {
     var possiblePicks = ['rock', 'paper', 'scissors'];
     return possiblePicks[Math.floor(Math.random() * 3)];
@@ -90,6 +93,7 @@ function playerPick(playerPick) {
     checkRoundWinner(playerPick, computerPick);
 }
 
+// check round winner function
 function checkRoundWinner(playerPick, computerPick) {
     playerResultElem.innerHTML = computerResultElem.innerHTML = '';
 
@@ -109,22 +113,27 @@ function checkRoundWinner(playerPick, computerPick) {
         playerResultElem.innerHTML = "Winner!";
         player.score++;
     } else if (winnerIs == 'computer') {
-        computerResultElem.innerHTML = "Winner";
+        computerResultElem.innerHTML = "Winner!";
         computer.score++;
     }
 
+    function setGamePoints() {
+        playerPointsElem.innerHTML = player.score;
+        computerPointsElem.innerHTML = computer.score;
+    }
+
+    setGamePoints();
+    gameFinished();
 }
 
-function playerPick(playerPick) {
-    var computerPick = getComputerPick();
-
-    playerPickElem.innerHTML = playerPick;
-    computerPickElem.innerHTML = computerPick;
-
-    checkRoundWinner(playerPick, computerPick);
-}
-
-function setGamePoints() {
-    playerPointsElem.innerHTML = player.score;
-    computerPointsElem.innerHTML = computer.score;
+// game finished
+function gameFinished() {
+    if (player.score === 10) {
+        alert(player.name + "is the winner!");
+        gameState = 'ended';
+    } else if (computer.score === 10) {
+        alert("Computer is the winner!");
+        gameState = 'ended';
+    }
+    setGameElements();
 }

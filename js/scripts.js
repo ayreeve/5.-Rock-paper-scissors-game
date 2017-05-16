@@ -116,20 +116,21 @@ function checkRoundWinner(playerPick, computerPick) {
         computerResultElem.innerHTML = "Winner!";
         computer.score++;
     }
-
-    function setGamePoints() {
-        playerPointsElem.innerHTML = player.score;
-        computerPointsElem.innerHTML = computer.score;
-    }
-
     setGamePoints();
     gameFinished();
 }
 
+function setGamePoints() {
+    playerPointsElem.innerHTML = player.score;
+    computerPointsElem.innerHTML = computer.score;
+}
+
+
+
 // game finished
 function gameFinished() {
     if (player.score === 10) {
-        alert(player.name + "is the winner!");
+        alert(player.name + " is the winner!");
         gameState = 'ended';
     } else if (computer.score === 10) {
         alert("Computer is the winner!");

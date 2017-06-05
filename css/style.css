@@ -142,6 +142,9 @@ h1 {
         display: block;
         margin-top: 8px;
     }
+    .pictures img {
+        padding: 0;
+    }
 }
 
 @media (max-width: 400px) {

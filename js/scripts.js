@@ -44,7 +44,8 @@ function setGameElements() {
             resultsElem.style.display = 'block';
             break;
         case 'ended':
-            newGameBtn.innerText = 'Play again';
+            newGameBtn.innerText = 'Replay!';
+            newGameBtn.style.fontSize = '0.9em';
         case 'notStarted':
         default:
             newGameElem.style.display = 'block';
@@ -61,15 +62,35 @@ var playerPointsElem = document.getElementById('js-playerPoints'),
     computerPointsElem = document.getElementById('js-computerPoints');
 
 function newGame() {
-    player.name = prompt('Type your name', 'Player name');
-    if (player.name) {
-        player.score = computer.score = 0;
-        gameState = 'started';
-        setGameElements();
+    swal({
+            title: "Hello there!",
+            text: "Please, enter your name:",
+            type: "input",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            animation: "slide-from-top",
+            inputPlaceholder: "player's name"
+        },
+        function (inputValue) {
+            if (inputValue === false) return false;
 
-        playerNameElem.innerHTML = player.name;
-        setGamePoints();
-    }
+            if (inputValue === "") {
+                swal.showInputError("Don't be so mysterious! Type your name");
+                return false;
+            }
+            swal("Let's play!", "Good luck, " + inputValue, "success");
+            player.name = inputValue;
+
+
+            if (player.name) {
+                player.score = computer.score = 0;
+                gameState = 'started';
+                setGameElements();
+
+                playerNameElem.innerHTML = player.name;
+                setGamePoints();
+            }
+        }); // koniec wywolania swal    
 
 }
 
@@ -101,6 +122,10 @@ function checkRoundWinner(playerPick, computerPick) {
 
     if (playerPick == computerPick) {
         winnerIs = 'noone'; // draw
+        document.getElementById("js-playerResult").style.color = "#fff";
+        document.getElementById("js-computerResult").style.color = "#fff";
+        playerResultElem.innerHTML = "Draw";
+        computerResultElem.innerHTML = "Draw";
     } else if (
         (computerPick == 'rock' && playerPick == 'scissors') ||
         (computerPick == 'scissors' && playerPick == 'paper') ||
@@ -111,8 +136,10 @@ function checkRoundWinner(playerPick, computerPick) {
 
     if (winnerIs == 'player') {
         playerResultElem.innerHTML = "Winner!";
+        document.getElementById("js-playerResult").style.color = "#b20404";
         player.score++;
     } else if (winnerIs == 'computer') {
+        document.getElementById("js-computerResult").style.color = "#b20404";
         computerResultElem.innerHTML = "Winner!";
         computer.score++;
     }
@@ -125,15 +152,24 @@ function setGamePoints() {
     computerPointsElem.innerHTML = computer.score;
 }
 
-
-
 // game finished
 function gameFinished() {
     if (player.score === 10) {
-        alert(player.name + " is the winner!");
+        swal({
+            title: "Sweet!",
+            text: "You are the winner!",
+            imageUrl: "../images/game_result/win.svg"
+        });
+
         gameState = 'ended';
     } else if (computer.score === 10) {
-        alert("Computer is the winner!");
+
+        swal({
+            title: "Sorry",
+            text: "Computer is the winner",
+            imageUrl: "../images/game_result/loose.svg"
+        });
+
         gameState = 'ended';
     }
     setGameElements();

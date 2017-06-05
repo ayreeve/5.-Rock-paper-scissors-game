@@ -1,3 +1,185 @@
+/* GENERAL */
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    background-color: #36b8b6;
+    font-size: 2em;
+    font-family: 'Gloria Hallelujah', cursive;
+    color: #4e4e4e;
+}
+
 .container {
-    padding: 20px;
+    padding: 23px 0;
+}
+
+#js-newGameElement > .row {
+    margin: 0;
+}
+
+
+/* ALERT */
+
+.sweet-alert {
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.sweet-alert .sa-input-error::before,
+.sweet-alert .sa-input-error::after {
+    top: 20%;
+    left: 100%;
+}
+
+.sweet-alert .sa-icon.sa-success .sa-line {
+    background-color: rgba(91, 192, 222, 0.75);
+}
+
+.sweet-alert .sa-icon.sa-success .sa-placeholder {
+    border: 4px solid #5BC0DE;
+}
+
+
+/* TITLE */
+
+h1 {
+    text-transform: uppercase;
+    margin: 0 15px;
+}
+
+.label {
+    border-radius: 10px;
+}
+
+
+/* NEW GAME BUTTON */
+
+#js-newGameButton {
+    width: 80px;
+    height: 80px;
+    margin-top: 30px;
+    padding: 10px;
+    border: 0;
+    border-radius: 50%;
+    font-size: 1.4em;
+    color: #4e4e4e;
+    outline: none;
+}
+
+#js-newGameButton:active {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#js-newGameButton:hover {
+    background-color: rgba(255, 255, 255, 0.78);
+}
+
+
+/* CHOICE BUTTONS */
+
+.pick-buttons {
+    margin-top: 20px;
+    position: relative;
+}
+
+.pick-buttons button {
+    width: 70px;
+    height: 70px;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: transparent;
+    outline: none;
+}
+
+.pick-buttons img:hover {
+    opacity: .8;
+}
+
+.pick-buttons img {
+    -webkit-transform: scale(.4);
+    transform: scale(.4);
+    position: relative;
+    top: -59px;
+    right: 65px;
+}
+
+
+/* RESULTS */
+
+.badge {
+    width: 28px;
+    height: 28px;
+    font-size: 1.1em;
+    border-radius: 50%;
+}
+
+.results {
+    padding: 0 10px;
+}
+
+
+/* PICTURES */
+
+.pictures {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.pictures img {
+    height: 230px;
+}
+
+
+/* MEDIA QUERIES */
+
+@media (max-width: 650px) {
+    #js-playerName,
+    .comp-name {
+        display: block;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    /* general */
+    .container {
+        padding: 15px;
+    }
+    /* title */
+    h1 {
+        font-size: 1em;
+    }
+    .label {
+        width: 110px;
+        height: 30px;
+        margin: 5px auto;
+        display: block;
+        font-size: .6em;
+        line-height: 1.2em;
+    }
+    /* buttons */
+    #js-newGameButton {
+        margin: -5px;
+        padding: 0;
+    }
+    .pick-buttons {
+        margin-top: 0;
+    }
+    /* results */
+    span {
+        font-size: .65em;
+    }
+    /* pictures */
+    .pictures {
+        padding-top: 0px;
+    }
+    .pictures img {
+        height: 150px;
+        margin-top: -9px;
+        padding: -20px;
+    }
 }

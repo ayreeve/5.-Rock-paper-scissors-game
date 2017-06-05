@@ -3,9 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Rock-paper-scissors JS game</title>
+    <meta name="author" content="Kaja Bogaczewicz">
+    <meta name="description" content="Rock-Paper-Scissor game">
+    <meta name="keywords" content="rock, paper, scissors, game, JS, HTML, CSS">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-paper-scissors game</title>
+    <link rel="shortcut icon" href="images/favicon/favicon.jpg" type="image/x-icon">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -13,42 +19,39 @@
     <div class="container">
 
         <!-- title with labels -->
-        <h3 class="text-center">
-            Welcome in game
+        <h1 class="text-center">
+            Welcome to the game
+        </h1>
+        <h2 class="text-center">
             <span class="label label-default">Rock</span>
             <span class="label label-info">Paper</span>
-            <span class="label label-danger">Scissors</span>
-        </h3>
+            <span class="label label-danger">Scissors</span>            
+        </h2>
+
 
         <!-- new game button -->
         <div id="js-newGameElement" class="container">
             <div class="row text-center">
                 <button id="js-newGameButton" class="btn btn-default">
-                    New game
+                    Play!
                 </button>
             </div>
         </div>
 
         <!-- player picks one of three buttons -->
         <div id="js-playerPickElement" class="container">
-            <div class="row text-center">
+            <div class="row text-center pick-buttons">
 
                 <button id="js-playerPick_rock" class="btn">
-                    <span class="badge">
-                        <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
-                    </span> Rock
+                    <img src="images/buttons/rock.png" alt="rock button">
                 </button>
 
                 <button id="js-playerPick_paper" class="btn">
-                    <span class="badge">
-                        <i class="fa fa-hand-paper-o" aria-hidden="true"></i>
-                    </span> Paper
+                    <img src="images/buttons/paper.png" alt="paper button">
                 </button>
 
                 <button id="js-playerPick_scissors" class="btn">
-                    <span class="badge">
-                        <i class="fa fa-hand-scissors-o" aria-hidden="true"></i>
-                    </span> Scissors
+                    <img src="images/buttons/scissors.png" alt="scissors button">
                 </button>
 
             </div>
@@ -57,7 +60,7 @@
     </div>
 
     <!-- results/actual game state -->
-    <div id="js-resultsTableElement" class="container">
+    <div id="js-resultsTableElement" class="results container">
 
         <!-- first row (score, players names) -->
         <div class="row">
@@ -80,7 +83,10 @@
             <div class="col-xs-5 text-center">
                 <span id="js-computerPoints" class="badge">
                     0
-                </span> Computer
+                </span>
+                <span class="comp-name">
+                    Comp.
+                </span>
             </div>
         </div>
 
@@ -97,7 +103,7 @@
 
             <div class="col-xs-5 text-center">
                 <span id="js-computerPick">
-                    Computer choice
+                    Comp. choice
                 </span>
             </div>
 
@@ -117,7 +123,7 @@
 
             <div class="col-xs-5 text-center">
                 <span id="js-computerResult">
-                    Computer result
+                    Comp. result
                 </span>
             </div>
 
@@ -125,9 +131,24 @@
 
     </div>
 
-    <!-- scripts -->
-    <script type="text/javascript" src=js/scripts.js></script>
+    <!-- fourth row (images) -->
+    <div class="container pictures">
 
+        <div class="row">
+            <div class="col-md-6 col-sm-12 text-center">
+                <img src="images/pictures/1.jpg" alt="">
+            </div>
+
+            <div class="col-md-6 col-sm-12 text-center">
+                <img src="images/pictures/2.jpg" alt="">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script type="text/javascript" src=js/scripts.js></script>
 </body>
 
 </html>

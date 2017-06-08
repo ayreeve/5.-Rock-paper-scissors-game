@@ -14,7 +14,13 @@ body {
 }
 
 .container {
+    max-width: 90vw;
     padding: 23px 0;
+}
+
+.col-md-6,
+.col-sm-12 {
+    padding: 0;
 }
 
 #js-newGameElement > .row {
@@ -86,25 +92,28 @@ h1 {
     position: relative;
 }
 
-.pick-buttons button {
-    width: 70px;
-    height: 70px;
-    margin: 5px;
-    border-radius: 50%;
-    background-color: transparent;
+.pick-buttons .btn:focus,
+.pick-buttons .btn:active,
+.pick-buttons .btn {
     outline: none;
+}
+
+.btn.active,
+.btn:active {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.pick-buttons button {
+    background-color: transparent;
+}
+
+.pick-buttons img {
+    max-width: 90px;
 }
 
 .pick-buttons img:hover {
     opacity: .8;
-}
-
-.pick-buttons img {
-    -webkit-transform: scale(.4);
-    transform: scale(.4);
-    position: relative;
-    top: -59px;
-    right: 65px;
 }
 
 
@@ -175,7 +184,7 @@ h1 {
 @media (max-width: 400px) {
     /* general */
     .container {
-        padding: 15px;
+        padding: 10px;
     }
     /* title */
     h1 {
@@ -194,8 +203,9 @@ h1 {
         margin: -5px;
         padding: 0;
     }
-    .pick-buttons {
-        margin-top: 0;
+    .pick-buttons img {
+        margin: -30px 10px;
+        max-width: 60px;
     }
     /* results */
     span {
@@ -207,7 +217,6 @@ h1 {
     }
     .pictures img {
         height: 150px;
-        margin-top: -9px;
         padding: -20px;
     }
 }

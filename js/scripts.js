@@ -158,7 +158,7 @@ function gameFinished() {
         swal({
             title: "Sweet!",
             text: "You are the winner!",
-            imageUrl: "../images/game_result/win.svg"
+            imageUrl: "images/game_result/win.svg"
         });
 
         gameState = 'ended';
@@ -167,7 +167,7 @@ function gameFinished() {
         swal({
             title: "Sorry",
             text: "Computer is the winner",
-            imageUrl: "../images/game_result/loose.svg"
+            imageUrl: "images/game_result/loose.svg"
         });
 
         gameState = 'ended';
